@@ -37,13 +37,11 @@ $(function () {
 
     }
 
-    function CopyTextCopied(){
-        $(this).attr('data-bs-original-title','Copiado')
-        console.log('oi')
-    }
-
     //Ao clickar no button gerar
     $(btnGerar).on('click',function(){    
+        //Altera o texto do Tooltip para Copiar
+        $('span.copiar').attr('data-bs-original-title', "Copiar")
+        //Mantem o Input da senha bloqueado
         $(inputSenha).attr('disabled','true')
         senhaArr = []
         for(let i = 0; i <= 10; i++){                
@@ -75,9 +73,15 @@ $(function () {
     })
 
     //Copia o texto para area de transferencia
-    $('span.copiar').click(function(){
+    $('span.copiar').on('click',function(){
         CopyText()
-        CopyTextCopied()
+        //Altera o texto do Tooltip para Copiado
+        $(this).attr('data-bs-original-title', "Copiado").tooltip('show')
     })
+
+
+    
+
+   
 
 })
