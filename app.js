@@ -43,7 +43,9 @@ $(function () {
     }
 
     //Ao clickar no button gerar
-    $(btnGerar).click(function(){
+    $(btnGerar).on('click',function(){    
+        $(inputSenha).attr('disabled','true')
+        senhaArr = []
         for(let i = 0; i <= 10; i++){                
             let number = gerarNumero(10)  //Gera um numero aleatorio entre 0 e 9
             let numberLetra = gerarNumero(LETRASIZE) //Gera um numero aleatorio entre 0 e 26
@@ -65,10 +67,11 @@ $(function () {
                 senhaArr.push(caracterEsp) // Adiciona um caracter especial ao Array
             }
         }
-
+        
         senhaStr = senhaArr.join('') //Junta o Array em uma string gerando a senha        
         $(inputSenha).val(senhaStr) // Substitui o conteudo pela senha gerada   
         $('span.copiar').removeClass('d-none') //Remove a classe D-NONE 
+       
     })
 
     //Copia o texto para area de transferencia
